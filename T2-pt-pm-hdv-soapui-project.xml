@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="c630d0b2-81cb-4bf1-9bc4-ab2fc8dc011d" activeEnvironment="Default" name="T2_pt_pm_hdv" resourceRoot="" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="ccd70297-61c5-4d6e-8b3a-3135083bcb9e" wsaVersion="NONE" name="tong2soSoapBinding" type="wsdl" bindingName="{http://T2_pt_pm_hdv}tong2soSoapBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/khiem/eclipse-workspace/T2_pt_pm_hdv/WebContent/wsdl/tong2so.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\khiem\eclipse-workspace\T2_pt_pm_hdv\WebContent\wsdl\tong2so.wsdl"><con:part><con:url>file:\C:\Users\khiem\eclipse-workspace\T2_pt_pm_hdv\WebContent\wsdl\tong2so.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://T2_pt_pm_hdv" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://T2_pt_pm_hdv" xmlns:intf="http://T2_pt_pm_hdv" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://T2_pt_pm_hdv" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="func">
+        <complexType>
+          <sequence>
+            <element name="a" type="xsd:int"/>
+            <element name="b" type="xsd:int"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="funcResponse">
+        <complexType>
+          <sequence>
+            <element name="funcReturn" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="funcResponse">
+    <wsdl:part element="impl:funcResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="funcRequest">
+    <wsdl:part element="impl:func" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="tong2so">
+    <wsdl:operation name="func">
+      <wsdl:input message="impl:funcRequest" name="funcRequest"></wsdl:input>
+      <wsdl:output message="impl:funcResponse" name="funcResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="tong2soSoapBinding" type="impl:tong2so">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="func">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="funcRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="funcResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="tong2soService">
+    <wsdl:port binding="impl:tong2soSoapBinding" name="tong2so">
+      <wsdlsoap:address location="http://localhost:8080/T2_pt_pm_hdv/services/tong2so"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/T2_pt_pm_hdv/services/tong2so</con:endpoint></con:endpoints><con:operation id="fa801b03-1022-47b0-83bc-124cbced4b9c" isOneWay="false" action="" name="func" bindingOperationName="func" type="Request-Response" outputName="funcResponse" inputName="funcRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="56aa0f97-88e3-4124-902e-a4fee6a24477" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/T2_pt_pm_hdv/services/tong2so</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:t2="http://T2_pt_pm_hdv">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <t2:func>\r
+         <t2:a>5</t2:a>\r
+         <t2:b>4</t2:b>\r
+      </t2:func>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://T2_pt_pm_hdv/tong2so/funcRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
