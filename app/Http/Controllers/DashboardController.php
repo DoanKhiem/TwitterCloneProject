@@ -8,6 +8,20 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $users = [
+            [
+                'name' => 'John Doe',
+                'age' => 20
+            ],
+            [
+                'name' => 'Đoàn Khiêm',
+                'age' => 25
+            ],
+            [
+                'name' => 'Đoàn Hai',
+                'age' => 17
+            ]
+        ];
+        return view('dashboard', ['users' => $users]);
     }
 }
