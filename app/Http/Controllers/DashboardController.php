@@ -13,7 +13,7 @@ class DashboardController extends Controller
 //            'content' => 'That is a test idea 2',
 //        ]);
 //        $idea->save();
-        $ideas = Idea::orderBy('created_at', 'desc')->get();
+        $ideas = Idea::orderBy('created_at', 'desc')->paginate(5);
 //        $idea = new Idea();
 //        $idea->content = 'That is a test idea 1';
 //        $idea->likes = 0;
