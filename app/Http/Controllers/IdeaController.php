@@ -9,6 +9,9 @@ class IdeaController extends Controller
 {
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'idea' => 'required|min:5|max:240',
+        ]);
         $idea = Idea::create([
             'content' => $request->idea,
         ]);
