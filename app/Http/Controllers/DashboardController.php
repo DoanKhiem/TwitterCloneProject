@@ -20,4 +20,12 @@ class DashboardController extends Controller
 //        $idea->save();
         return view('dashboard', ['ideas' => $ideas]);
     }
+
+    public function destroy($id)
+    {
+        $idea = Idea::findOrFail($id);
+        $idea->delete();
+        return redirect()->route('dashboard')->with('success', 'Idea was deleted successfully.');
+
+    }
 }
