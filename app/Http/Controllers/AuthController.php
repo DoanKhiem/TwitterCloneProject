@@ -51,4 +51,12 @@ class AuthController extends Controller
             return back()->with('error', 'Invalid credentials');
         }
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('dashboard')->with('success', 'Goodbye!');
+    }
 }

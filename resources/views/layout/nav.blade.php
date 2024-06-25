@@ -18,7 +18,13 @@
                 @endguest
                 @auth()
                 <li class="nav-item">
-                    <a class="nav-link" href="/profile">Profile</a>
+                    <a class="nav-link" href="/profile">{{ Auth::user()->name }}</a>
+                </li>
+                <li class="nav-item">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button class="btn btn-danger" type="submit">Logout</button>
+                    </form>
                 </li>
                 @endauth
             </ul>
