@@ -20,11 +20,11 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::post('/idea', [IdeaController::class, 'store'])->name('idea.store');
 Route::get('/idea/{idea}', [IdeaController::class, 'show'])->name('idea.show');
-Route::get('/idea/{idea}/edit', [IdeaController::class, 'edit'])->name('idea.edit');
-Route::put('/idea/{idea}/update', [IdeaController::class, 'update'])->name('idea.update');
-Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy');
+Route::get('/idea/{idea}/edit', [IdeaController::class, 'edit'])->name('idea.edit')->middleware('auth');
+Route::put('/idea/{idea}/update', [IdeaController::class, 'update'])->name('idea.update')->middleware('auth');
+Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy')->middleware('auth');
 
-Route::post('/idea/{idea}/comments', [CommentController::class, 'store'])->name('idea.comment.store');
+Route::post('/idea/{idea}/comments', [CommentController::class, 'store'])->name('idea.comment.store')->middleware('auth');
 
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'store'])->name('register.store');
