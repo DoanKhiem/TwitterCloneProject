@@ -53,9 +53,17 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(User $user)
     {
-        //
+        $validated = request()->validate([
+            'name' => 'required|min:3|max:40',
+            'bio' => 'nullable|min:1|max:255',
+            'image' => 'image',
+        ]);
+
+        $user->update($validated);
+
+        return redirect()->route('profile');
     }
 
     /**
