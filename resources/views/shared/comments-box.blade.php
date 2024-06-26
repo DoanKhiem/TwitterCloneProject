@@ -10,7 +10,7 @@
     </form>
     <hr>
     @foreach($idea->comments as $comment)
-        <div class="d-flex align-items-start">
+    <div class="d-flex align-items-start">
         <img style="width:35px" class="me-2 avatar-sm rounded-circle"
              src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Luigi"
              alt="Luigi Avatar">

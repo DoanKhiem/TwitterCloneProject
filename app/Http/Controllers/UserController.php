@@ -47,7 +47,7 @@ class UserController extends Controller
     {
         $editing = true;
         $ideas = $user->ideas()->paginate(5);
-        return view('users.show', ['user' => $user, 'editing' => $editing, 'ideas' => $ideas]);
+        return view('users.edit', ['user' => $user, 'editing' => $editing, 'ideas' => $ideas]);
     }
 
     /**
@@ -64,5 +64,10 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function profile()
+    {
+        return $this->show(auth()->user());
     }
 }
