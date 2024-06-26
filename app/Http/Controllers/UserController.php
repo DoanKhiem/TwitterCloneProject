@@ -36,7 +36,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', ['user' => $user]);
+        $ideas = $user->ideas()->paginate(5);
+        return view('users.show', ['user' => $user, 'ideas' => $ideas]);
     }
 
     /**
@@ -44,7 +45,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', ['user' => $user]);
+        $editing = true;
+        $ideas = $user->ideas()->paginate(5);
+        return view('users.show', ['user' => $user, 'editing' => $editing, 'ideas' => $ideas]);
     }
 
     /**
