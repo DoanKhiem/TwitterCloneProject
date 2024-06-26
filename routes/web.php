@@ -18,21 +18,15 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::post('/idea', [IdeaController::class, 'store'])->name('idea.store');
-Route::get('/idea/{idea}', [IdeaController::class, 'show'])->name('idea.show');
-Route::get('/idea/{idea}/edit', [IdeaController::class, 'edit'])->name('idea.edit')->middleware('auth');
-Route::put('/idea/{idea}/update', [IdeaController::class, 'update'])->name('idea.update')->middleware('auth');
-Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy')->middleware('auth');
+Route::group(['prefix' => 'ideas', 'as' => 'ideas.', 'middleware' => 'auth'], function () {
+    Route::post('', [IdeaController::class, 'store'])->name('store')->withoutMiddleware('auth');
+    Route::get('/{idea}', [IdeaController::class, 'show'])->name('show')->withoutMiddleware('auth');
+    Route::get('/{idea}/edit', [IdeaController::class, 'edit'])->name('edit');
+    Route::put('/{idea}/update', [IdeaController::class, 'update'])->name('update');
+    Route::delete('/{idea}', [IdeaController::class, 'destroy'])->name('destroy');
+    Route::post('/{idea}/comments', [CommentController::class, 'store'])->name('comment.store');
+});
 
-Route::post('/idea/{idea}/comments', [CommentController::class, 'store'])->name('idea.comment.store')->middleware('auth');
-
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register', [AuthController::class, 'store'])->name('register.store');
-
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
-
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/terms', function () {
     return view('terms');

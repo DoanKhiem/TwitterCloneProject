@@ -1,5 +1,5 @@
 <div>
-    <form action="{{ route('idea.comment.store', $idea->id) }}" method="POST">
+    <form action="{{ route('ideas.comment.store', $idea->id) }}" method="POST">
         @csrf
         <div class="mb-3">
             <textarea name="content" class="fs-6 form-control" rows="1"></textarea>
