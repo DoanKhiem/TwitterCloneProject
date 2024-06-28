@@ -5,7 +5,8 @@
                 <img style="width:50px" class="me-2 avatar-sm rounded-circle"
                      src="{{ $idea->user->getImageURL() }}" alt="{{ $idea->user->name }} Avatar">
                 <div>
-                    <h5 class="card-title mb-0"><a href="{{ route('users.show', $idea->user->id) }}">{{ $idea->user->name }}</a></h5>
+                    <h5 class="card-title mb-0"><a
+                            href="{{ route('users.show', $idea->user->id) }}">{{ $idea->user->name }}</a></h5>
                 </div>
             </div>
             <div>
@@ -32,24 +33,21 @@
                     @enderror
                 </div>
                 <div class="">
-                    <button type="submit" class="btn btn-dark mb-2"> Update </button>
+                    <button type="submit" class="btn btn-dark mb-2"> Update</button>
                 </div>
             </form>
         @else
-        <p class="fs-6 fw-light text-muted">
-            {{ $idea->content }}
-        </p>
+            <p class="fs-6 fw-light text-muted">
+                {{ $idea->content }}
+            </p>
         @endif
         <div class="d-flex justify-content-between">
-            <div>
-                <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
-                                        </span> {{ $idea->likes }} </a>
-            </div>
+            @include('ideas.shared.like-button')
             <div>
                                     <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
                                         {{ $idea->created_at }} </span>
             </div>
         </div>
-        @include('shared.comments-box')
+        @include('ideas.shared.comments-box')
     </div>
 </div>
