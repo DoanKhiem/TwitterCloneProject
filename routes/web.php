@@ -6,6 +6,7 @@ use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\IdeaLikeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,12 +34,16 @@ Route::resource('ideas', IdeaController::class)->only(['show']);
 
 Route::resource('ideas.comments', CommentController::class)->only(['store'])->middleware('auth');
 
-Route::resource('users', UserController::class)->only(['show', 'edit', 'update'])->middleware('auth');
+Route::resource('users', UserController::class)->only(['show']);
+Route::resource('users', UserController::class)->only(['edit', 'update'])->middleware('auth');
 
 Route::get('profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
 
 Route::post('users/{user}/follow', [FollowerController::class, 'follow'])->middleware('auth')->name('users.follow');
 Route::post('users/{user}/unfollow', [FollowerController::class, 'unfollow'])->middleware('auth')->name('users.unfollow');
+
+Route::post('ideas/{idea}/like', [IdeaLikeController::class, 'like'])->middleware('auth')->name('ideas.like');
+Route::post('ideas/{idea}/unlike', [IdeaLikeController::class, 'unlike'])->middleware('auth')->name('ideas.unlike');
 
 Route::get('/terms', function () {
     return view('terms');
