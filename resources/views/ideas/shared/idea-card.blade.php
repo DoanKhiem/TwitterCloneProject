@@ -9,14 +9,20 @@
                             href="{{ route('users.show', $idea->user->id) }}">{{ $idea->user->name }}</a></h5>
                 </div>
             </div>
-            <div>
-                <form action="{{ route('ideas.destroy', $idea->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <a href="{{ route('ideas.edit', $idea->id) }}">Edit</a>
-                    <a class="ms-2" href="{{ route('ideas.show', $idea->id) }}">View</a>
-                    <button class="ms-2 btn btn-danger btn-sm">X</button>
-                </form>
+            <div class="d-flex">
+                <a href="{{ route('ideas.show', $idea->id) }}">View</a>
+                @auth()
+                    @can('update', $idea)
+                        <a class="ms-2" href="{{ route('ideas.edit', $idea->id) }}">Edit</a>
+                    @endcan
+                    @can('delete', $idea)
+                        <form action="{{ route('ideas.destroy', $idea->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="ms-2 btn btn-danger btn-sm">X</button>
+                        </form>
+                    @endcan
+                @endauth
             </div>
         </div>
     </div>
