@@ -24,23 +24,23 @@ class IdeaController extends Controller
 
     public function destroy(Idea $idea)
     {
-        if ($idea->user_id !== auth()->id()) {
-            abort(403);
-        }
+//        if ($idea->user_id !== auth()->id()) {
+//            abort(403);
+//        }
+        $this->authorize('idea.delete', $idea);
         $idea->delete();
         return redirect()->route('dashboard')->with('success', 'Idea was deleted successfully.');
 
     }
 
     public function edit(Idea $idea) {
-        if ($idea->user_id !== auth()->id()) {
-            abort(403);
-        }
+        $this->authorize('idea.edit', $idea);
         $editing = true;
         return view('ideas.show', ['idea' => $idea, 'editing' => $editing]);
     }
 
     public function update(Idea $idea, Request $request) {
+        $this->authorize('idea.edit', $idea);
         $validated = $request->validate([
             'content' => 'required|min:5|max:240',
         ]);
