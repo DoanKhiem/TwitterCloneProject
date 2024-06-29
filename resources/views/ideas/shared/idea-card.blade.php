@@ -12,10 +12,10 @@
             <div class="d-flex">
                 <a href="{{ route('ideas.show', $idea->id) }}">View</a>
                 @auth()
-                    @can('idea.edit', $idea)
+                    @can('update', $idea)
                         <a class="ms-2" href="{{ route('ideas.edit', $idea->id) }}">Edit</a>
                     @endcan
-                    @can('idea.delete', $idea)
+                    @can('delete', $idea)
                         <form action="{{ route('ideas.destroy', $idea->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
