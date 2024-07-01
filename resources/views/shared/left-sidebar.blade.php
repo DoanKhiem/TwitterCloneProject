@@ -17,5 +17,8 @@
     </div>
     <div class="card-footer text-center py-2">
         <a class="btn btn-link btn-sm" href="{{ route('profile') }}">View Profile </a>
+        <hr>
+        <a class="btn btn-link btn-sm" href="{{ route('lang', 'vn') }}">Viet Nam</a>
+        <a class="btn btn-link btn-sm" href="{{ route('lang', 'es') }}">English</a>
     </div>
 </div>

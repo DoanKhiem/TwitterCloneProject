@@ -20,6 +20,11 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 |
 */
 
+Route::get('lang/{locale}', function ($locale) {
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('lang');
+
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 //Route::group(['prefix' => 'ideas', 'as' => 'ideas.', 'middleware' => 'auth'], function () {
