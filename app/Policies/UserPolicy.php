@@ -14,7 +14,7 @@ class UserPolicy
      */
     public function update(User $user, User $model): bool
     {
-        return $user->is($model);
+        return  $user->is_admin || $user->is($model);
     }
 
 
