@@ -61,5 +61,7 @@ Route::get('/terms', function () {
 Route::middleware(['auth', 'can:admin'])->prefix('/admin')->name('admin.')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
     Route::get('/users', [AdminDashboardController::class, 'users'])->name('users');
+
+    Route::get('/ideas', [AdminDashboardController::class, 'ideas'])->name('ideas');
 });
 //Route::get('/admin', [AdminDashboardController::class, 'index'])->middleware(['auth'])->name('admin.dashboard');
