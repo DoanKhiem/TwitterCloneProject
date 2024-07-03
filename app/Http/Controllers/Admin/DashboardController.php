@@ -16,7 +16,10 @@ class DashboardController extends Controller
 //        if (Gate::denies('admin')) {
 //            abort(403);
 //        }
-        return view('admin.dashboard');
+        $totalUsers = User::count();
+        $totalIdeas = Idea::count();
+        $totalComments = Comment::count();
+        return view('admin.dashboard', compact('totalUsers', 'totalIdeas', 'totalComments'));
     }
 
     public function users()
